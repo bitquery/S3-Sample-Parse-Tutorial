@@ -30,7 +30,7 @@ with open('block_headers.json', 'w') as f:
 
 #### dextrades###
 
-s3.download_file(bucket_name, block_object_key, dextrades_local_path)
+s3.download_file(bucket_name, dextrades_object_key, dextrades_local_path)
 
 with open(dextrades_local_path, 'rb') as f:
     dex_compressed_data = f.read()
