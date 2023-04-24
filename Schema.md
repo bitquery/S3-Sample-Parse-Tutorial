@@ -18,6 +18,7 @@
 
 ## Token 
 
+```JSON
 {
   "Receiver": "address"
 }{
@@ -58,3 +59,4 @@
       },
       "Success": true
     },
+```
