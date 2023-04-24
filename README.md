@@ -1,4 +1,4 @@
-# S3-Sample-Parse-Tutorial
+# S3 Sample Parse Tutorial
 
 # How to Get Started
 
