@@ -8,7 +8,7 @@ from google.protobuf.json_format import MessageToJson
 s3 = boto3.client('s3', aws_access_key_id='YOUR ID', aws_secret_access_key='YOUR KEY', region_name='us-east-1')
 bucket_name = 'demo-streaming-eth'
 block_object_key = 'eth.blocks.s3/000016780000/000016780000_0xf127ae770b9b73af1be93e5a7ac19be5e3bac41673b2685c6b4619fb09af09f0_41452bd33251301d32c606c704120d027de580505d611e4fb1c5ff3ef51d0cb7.block.lz4'
-dextrades_object_key = 'eth.blocks.s3/000016780000/000016780000_0xf127ae770b9b73af1be93e5a7ac19be5e3bac41673b2685c6b4619fb09af09f0_41452bd33251301d32c606c704120d027de580505d611e4fb1c5ff3ef51d0cb7.dextrades.lz4'
+dextrades_object_key = 'eth.dextrades.s3/000016780000/000016780000_0xf127ae770b9b73af1be93e5a7ac19be5e3bac41673b2685c6b4619fb09af09f0_0a81237e6f43853cf5ed19cd1a0e527fa6e5b08364d7113d796d9dc9c4b2e7cf.block.lz4'
 
 blocks_local_path = 'YOUR PATH/s3downloadblocks.lz4'
 dextrades_local_path = 'YOUR PATH/s3downloaddextrades.lz4'
