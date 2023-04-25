@@ -9,11 +9,115 @@
     "SmartContract": "AQ=="
   },
   "Amount": "...",
-  "Data": "..."
+  "Data": "gh..."
 }{
-  "SmartContract": "...",
-  "FeeRecipient": "address"
-}
+  "SmartContract": "CgEB...",
+  "FeeRecipient": "CEgQD..."
+}{
+  "Seller": "Cg...",
+  "Buyer": "CiDx..."
+}{
+  "Currency": {
+    "SmartContract": "AQ=="
+  },
+  "Amount": "...",
+  "Recipient": "CEg..."
+}{
+  "Chain": {
+    "ChainId": "AQ==",
+    "Config": "Chain ID:  1 (mainnet)\nConsensus: Beacon (proof-of-stake),..."
+  },
+  "Header": {
+    "Hash": "8Seudwubc68b6T5aesGb5eO6xBZzsmhca0YZ+wmvCfA=",
+    "ParentHash": "WPOjY65rhz/Wzr2BNzpYLrvOH8VQ6bmf0Lf9GKgc13I=",
+    "UncleHash": "HcxN6N7HXXqrhbVntszUGtMSRRuUinQT8KFC/UDUk0c=",
+    "Root": "dyAy925IxO5z5pgL0BSS5mnBDFjHkeBsrtd3x+TmF9o=",
+    "TxHash": "bbFnO0wqGguGsMhC1EBETujvVn6lfhDSd/o8cPr4in0=",
+    "ReceiptHash": "fAJT2ZTL2W9AAPdEDzxoJuEZywPFlTSCVp1PvgCPwGc=",
+    "MixDigest": "zIkWwqT5SxNyKPY5MWTv/ObnaRg7XsSnjZu0c31BO8c=",
+    "Coinbase": "H5CQquKLij3OrfKBsPEoKOZ2wyY=",
+    "Bloom": "U6VzYBkQWAAmPBCYixxHJA2U0BMEApawAQGlgBWKPAhARouEgAJ9oywRHgxLa9OagsVcRp2gMYB+GAlAFHZqihCR2ARkKozMaoNKPAZcgnjxgJICREU4VQUI2FGRCTEilhQvBDIG1EAFl5QISDI+SYoSImc6HUcGiEEC8hZYYQIhmBdGv+tEMNZEuI2AJhi5ptVISUFBFGjOpFxGQBGwCJvoIWBrJm/LCfBqwAVgh9KgJAAFZKuIDoiuToUHLAtBS0AjgiAIBJCASEiFMIBx0s9nYvACilAcgNWtRgIA6nBAO2c+gc3tqAoMdbGDpDiECTlwSRBcAmCCyIw7iCE8kw==",
+    "Extra": "cnN5bmMtYnVpbGRlci54eXo=",
+    "Number": "AQAK4A==",
+    "GasLimit": "30000000",
+    "GasUsed": "11692403",
+    "Time": "1678235519",
+    "BaseFee": "ByGhI+U="
+  },
+  "Trades": [
+    {
+      "CallIndex": "2",
+      "HasLog": true,
+      "Dex": {
+        "SmartContract": "4FVKR2oJJwOr2z7zXIDg120yk58=",
+        "DelegatedTo": "4FVKR2oJJwOr2z7zXIDg120yk58=",
+        "OwnerAddress": "H5hDHIrZhSNjGuSlnyZzRuox+YQ=",
+        "ProtocolName": "uniswap_v3",
+        "ProtocolFamily": "Uniswap",
+        "ProtocolVersion": "3",
+        "Currencies": [
+          {
+            "SmartContract": "oLhpkcYhizbB0Z1KLp6wzjYG60g=",
+            "Delegated": true,
+            "DelegatedTo": "tyd6bpWZIEFWjZOR0J0BIgI3eKI=",
+            "ProtocolName": "erc20",
+            "Name": "USD Coin",
+            "Symbol": "USDC",
+            "Decimals": 6,
+            "Fungible": true
+          },
+          {
+            "SmartContract": "wCqqObIj/o0KDlxPJ+rZCDx1bMI=",
+            "DelegatedTo": "wCqqObIj/o0KDlxPJ+rZCDx1bMI=",
+            "ProtocolName": "erc20_deposable",
+            "Name": "Wrapped Ether",
+            "Symbol": "WETH",
+            "Decimals": 18,
+            "Fungible": true
+          }
+        ]
+      },
+      "Buy": {
+        "Seller": "ERERElTuslR3to+4Xtkp9zqWBYI=",
+        "Buyer": "4FVKR2oJJwOr2z7zXIDg120yk58=",
+        "Assets": [
+          {
+            "Currency": {
+              "SmartContract": "wCqqObIj/o0KDlxPJ+rZCDx1bMI=",
+              "DelegatedTo": "wCqqObIj/o0KDlxPJ+rZCDx1bMI=",
+              "ProtocolName": "erc20_deposable",
+              "Name": "Wrapped Ether",
+              "Symbol": "WETH",
+              "Decimals": 18,
+              "Fungible": true
+            },
+            "Amount": "DeC2s6dkAAA="
+          }
+        ]
+      },
+      "Sell": {
+        "Seller": "4FVKR2oJJwOr2z7zXIDg120yk58=",
+        "Buyer": "ERERElTuslR3to+4Xtkp9zqWBYI=",
+        "Assets": [
+          {
+            "Currency": {
+              "SmartContract": "oLhpkcYhizbB0Z1KLp6wzjYG60g=",
+              "Delegated": true,
+              "DelegatedTo": "tyd6bpWZIEFWjZOR0J0BIgI3eKI=",
+              "ProtocolName": "erc20",
+              "Name": "USD Coin",
+              "Symbol": "USDC",
+              "Decimals": 6,
+              "Fungible": true
+            },
+            "Amount": "XW077w=="
+          }
+        ]
+      },
+      "Sender": "ERERElTuslR3to+4Xtkp9zqWBYI=",
+      "Success": true
+    },...
+   
 ```
 
 ## Token 
@@ -58,7 +162,7 @@
         "Fungible": true
       },
       "Success": true
-    },
+    },...
 ```
 ## Transaction
 
@@ -96,7 +200,7 @@
         "Hash": "jrE3G7HZCaHsKn4mFPFX9yFbPzbDn2FIZfG5XuetivA=",
         "Gas": "250752",
         "Value": "DeC2s6dkAAA=",
-        "Data": "5EkCLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3gtrOnZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADUFU4AhASFzx0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA4FVKR2oJJwOr2z7zXIDg120yk58AAAAAAAAAAAAAAAAwZ8MFS0pgX54ye62C2bpgSf52oOJrmXc=",
+        "Data": "nn...",
         "Nonce": "7",
         "ChainId": "AQ==",
         "Cost": "DgSHZOtcwYA=",
@@ -199,5 +303,5 @@
               }
             }
           ]
-        },
+        },...
 ```
