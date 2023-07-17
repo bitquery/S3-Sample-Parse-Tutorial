@@ -2,6 +2,8 @@ import boto3
 import lz4.frame
 import block_message_pb2
 import json
+import binascii
+import base64
 import dex_block_message_pb2
 import token_block_message_pb2
 from google.protobuf.json_format import MessageToJson
@@ -35,6 +37,63 @@ with open('block_headers.json', 'w') as f:
 
 #### dextrades###
 
+
+def decode_all_fields(dex_json_object):
+    """
+    Decodes all of the base64-encoded strings in a JSON object.
+
+    Args:
+        dex_json_object: The JSON object to decode.
+
+    Returns:
+        The decoded JSON object.
+    """
+
+    fields_to_skip = [
+        "GasLimit",
+        "GasUsed",
+        "Time",
+        "ProtocolName",
+        "ProtocolFamily",
+        "Name",
+        "Symbol",
+        "ProtocolVersion",
+        "Config",
+    ]
+
+    fields_numerical = ["Number", "Amount", "BaseFee", "ChainId"]
+
+    if isinstance(dex_json_object, dict):
+        for key, value in dex_json_object.items():
+            if isinstance(value, dict):
+
+                dex_json_object[key] = decode_all_fields(value)
+            elif isinstance(value, list):
+
+                for i in range(len(value)):
+                    value[i] = decode_all_fields(value[i])
+            elif isinstance(value, str) and key not in fields_to_skip:
+
+                decoded_value = base64.b64decode(value)
+                hex_decoded_value = "0x" + \
+                    binascii.hexlify(decoded_value).decode()
+                
+                if key in fields_numerical:
+                    Int_hex_decoded_value=int(hex_decoded_value,16)
+                    hex_decoded_value=Int_hex_decoded_value
+                    print(Int_hex_decoded_value)
+                dex_json_object[key] = hex_decoded_value
+
+    elif isinstance(dex_json_object, list):
+        for i, item in enumerate(dex_json_object):
+            if isinstance(item, dict):
+                dex_json_object[i] = decode_all_fields(item)
+
+    return dex_json_object
+
+
+
+
 s3.download_file(bucket_name, dextrades_object_key, dextrades_local_path)
 
 with open(dextrades_local_path, 'rb') as f:
@@ -42,33 +101,31 @@ with open(dextrades_local_path, 'rb') as f:
 
 dex_decompressed_data = lz4.frame.decompress(dex_compressed_data)
 print('here3')
-dextrades = dex_block_message_pb2.TradeAsset()
-dextrades1=dex_block_message_pb2.DexInfo()
-dextrades2=dex_block_message_pb2.TradeSide()
-dextrades3=dex_block_message_pb2.TradeFee()
-dextrades4=dex_block_message_pb2.DexTrade()
-dextrades5=dex_block_message_pb2.DexBlockMessage()
+
+dextrades=dex_block_message_pb2.DexBlockMessage()
 
 dextrades.ParseFromString(dex_decompressed_data)
-dextrades1.ParseFromString(dex_decompressed_data)
+dex_json_string = json.loads(MessageToJson(dextrades))
 
-print('here4')
-# Write  to a file
-with open('dextrades.json', 'w') as f:
-    dex_json_string = MessageToJson(dextrades)
-    f.write(dex_json_string)
-    dex_json_string1 = MessageToJson(dextrades1)
-    f.write(dex_json_string1)
-    dex_json_string2 = MessageToJson(dextrades2)
-    f.write(dex_json_string2)
-    dex_json_string3 = MessageToJson(dextrades3)
-    f.write(dex_json_string3)
+print(type(dex_json_string["Trades"][0]["Dex"]["Currencies"]))
+for i in range(len(dex_json_string["Trades"])):
+    dex_json_string["Trades"][i]["Dex"] = decode_all_fields(
+        dex_json_string["Trades"][i]["Dex"])
+    dex_json_string["Trades"][i]["Buy"] = decode_all_fields(
+        dex_json_string["Trades"][i]["Buy"])
+    dex_json_string["Trades"][i]["Sell"] = decode_all_fields(
+        dex_json_string["Trades"][i]["Sell"])
 
-    dex_json_string4 = MessageToJson(dextrades4)
-    f.write(dex_json_string4)
-    dex_json_string5 = MessageToJson(dextrades5)
-    f.write(dex_json_string5)
+dex_json_string["Header"] = decode_all_fields(dex_json_string["Header"])
+dex_json_string["Chain"]= decode_all_fields(dex_json_string["Chain"])
 
+
+with open('file_hex.json', 'w') as file:
+    json.dump(dex_json_string, file, indent=4)
+
+
+
+#########
 
 ## Token
 print('here5')
@@ -89,4 +146,3 @@ with open('token.json', 'w') as f:
     f.write(json_string)
     json_string1=MessageToJson(TokenBlockMessage)
     f.write(json_string1)
-
